@@ -23,15 +23,15 @@ Data source: https://news.yahoo.co.jp/
 
 ## Dashboard
 
-<img src="assets/dashboard_1.png" alt="architecture diagram" width="700">
-<img src="assets/dashboard_2.png" alt="architecture diagram" width="700">
+<img src="assets/dashboard_1.png" alt="architecture diagram" width="900">
+<img src="assets/dashboard_2.png" alt="architecture diagram" width="900">
 
 
 
 ---
 ## Architecture
 
-<img src="assets/architecture_diagram.png" alt="architecture diagram" width="600">
+<img src="assets/architecture_diagram.png" alt="architecture diagram" width="=800">
 
 
 
