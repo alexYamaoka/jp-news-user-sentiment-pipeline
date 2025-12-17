@@ -1,19 +1,16 @@
 # Yahoo Japan User Sentiment Analysis Pipeline
 
-A pipeline that scrapes Yahoo Japan news articles and user comments, performs sentiment analysis on Japanese comments and English translation/summarization of articles, and visualizes sentiment distributions across news categories through a Streamlit dashboard. 
+A pipeline that scrapes Yahoo Japan news articles and user comments, performs Japanese-language sentiment analysis on user comments and JP -> EN translation and summarization of articles, and visualizes sentiment distributions across news categories through a Streamlit dashboard. 
 
-Over 300+ articles and 150,000+ comments processed and analyzed using NLP Models and Tokenizers from Hugging Face and Ollama.
+Over 300+ articles and 150,000+ user comments processed and analyzed using NLP Models and Tokenizers from Hugging Face and Ollama.
 
 Data source: https://news.yahoo.co.jp/
-
-
-
 
 
 ### What the Pipeline Does
 
 - Automatically scrapes Yahoo Japan news articles and user comments every 4 hours
-- Classifies sentiment on comments in Japanese text (positive/negative/neutral) using BERT 
+- Classifies sentiment on Japanese user comments (positive/negative/neutral) using a Japanese-pretrained BERT classifier
 - Translates articles JP to EN and generates summaries
 - Categorizes articles into 10 topics using local LLM (Ollama)
 - Aggregates sentiment statistics and engagement metrics by category
@@ -31,7 +28,7 @@ Data source: https://news.yahoo.co.jp/
 ---
 ## Architecture
 
-<img src="assets/architecture_diagram.png" alt="architecture diagram" width="=800">
+<img src="assets/architecture_diagram.png" alt="architecture diagram" width="800">
 
 
 
@@ -50,7 +47,7 @@ Data source: https://news.yahoo.co.jp/
     Step 1: MongoDB → Comments → Sentiment Analysis (BERT) → MongoDB
     Step 2: MongoDB → Articles → Translation (NLLB) → Summarization (BART) → Categorization (LLM) → MongoDB
                                       
-    (Articles require Comment sentiment aggregation)
+    (Article-level sentiment is derived via aggregation of comment sentiment)
 
 #### 3. VISUALIZATION 
     MongoDB → Streamlit Dashboard → Analytics
@@ -72,7 +69,7 @@ Data source: https://news.yahoo.co.jp/
 #### 2. Article Translation
 **Model:** `facebook/nllb-200-distilled-600M` (configurable)
 - Japanese → English translation
-- Handles long articles via chunking (800 char limit per chunk)
+- Handles long articles via chunking (~800 characters per chunk)
 - Preserves context across chunks
 
 
@@ -112,7 +109,7 @@ CATEGORIES = [
 - **Separate collections** for articles and comments enable efficient querying
 - **`processed` flag** ensures idempotent pipeline execution (can safely re-run)
 - **Embedded sentiment summary** in articles improves dashboard performance
-- **Indexed on `article_id`** for fast comment lookups (O(log n))
+- **Indexed on `article_id`** for fast comment lookups 
 - **Append-only ingestion** maintains data integrity
 
 
