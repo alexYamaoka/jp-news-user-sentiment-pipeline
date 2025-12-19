@@ -24,8 +24,17 @@ Data source: https://news.yahoo.co.jp/
 <img src="assets/dashboard_2.png" width="900">
 <img src="assets/dashboard_3.png" width="900">
 
+---
+
+## Yahoo Japan Site
+- Article
+<img src="assets/yahoojp_1.png" width="400">
+
+- Comments
+<img src="assets/yahoojp_2.png" width="400">
 
 ---
+
 ## Architecture
 
 <img src="assets/architecture_diagram.png" alt="architecture diagram" width="800">
@@ -158,14 +167,6 @@ Analytics interface built with Streamlit and Plotly:
 - Stacked bar: Top 4 articles by comment volume with sentiment breakdown
 - Category comparison: Positive vs negative trends
 - Real-time statistics (processed vs unprocessed articles/comments)
-
----
-## Yahoo Japan Site
-- Article
-<img src="assets/yahoojp_1.png" width="400">
-
-- Comments
-<img src="assets/yahoojp_2.png" width="400">
 
 ---
 
